@@ -12,4 +12,16 @@ public class Corrente extends Conta {
     public void setLimite(double limite) {
         this.limite = limite;
     }
+
+    public String  status() {
+        return "\n---> Status <---" +
+                "\nNome: " + this.getNome() +
+                "\nCPF: " + this.getCpf() +
+                "\nCidade: " + this.getCidade() +
+                "\nEmail: " + this.getEmail() +
+                "-------------------------------" +
+                "\nSaldo: " + this.getSaldoConta() +
+                "\nLimite: " + this.getLimite() +
+                "-------------------------------\n";
+    }
 }
