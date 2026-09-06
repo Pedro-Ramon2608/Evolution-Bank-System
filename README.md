@@ -7,9 +7,9 @@ O Evolution Bank System é um projeto evolutivo em Java projetado para simular a
 
 Nesta etapa inicial, a aplicação opera via CLI (Console/Terminal) com foco em persistência de dados local:
 
-* **Gerenciamento de Contas:** Criação e manipulação de contas bancárias (ex: `Corrente`, `Conta`, `Usuario`).
+* **Cadastro e Gerenciamento de Contas:** Registro de novos usuários com gravação contínua dos dados em arquivo de texto plano (`BufferedWriter` e `FileWriter` em modo append).
 
-* **Persistência em Arquivo TXT:** Gravação contínua dos dados dos usuários em arquivo de texto plano via manipulação de fluxos com `BufferedWriter` e `FileWriter` em modo _append_.
+* **Sistema de Autenticação (Login):** Leitura e parseamento do arquivo TXT para realizar a verificação de credenciais, comparando o e-mail e a senha informados pelo usuário com os registros salvos para autorizar o acesso.
 
 * **Organização Modular:** Divisão clara de responsabilidades entre regras de negócio (`Metodos.java`), modelo de dados (`Usuario.java`, `Conta.java`, `Corrente.java`), gerenciamento de arquivos (`Arquivo.java`) e fluxo de execução (`Main.java`).
 
@@ -20,7 +20,7 @@ O projeto passará por quatro grandes fases de refatoração e expansão arquite
 
 Fase | Status | Descrição & Tecnologias
 :---: | :---: | :---
-Fase 1  | 🟢 Concluido  | Aplicações via Console & TXT: Manipulação de IO em Java, POO pura e persistência de dados em arquivos locais .txt.
+Fase 1  | 🟢 Concluido  | Console, TXT & Autenticação: Manipulação de IO em Java, POO pura, cadastro e sistema de login com validação de e-mail e senha em arquivo local.
 Fase 2 | 🟡 Em Breve | Interface Gráfica (Desktop): Substituição do fluxo CLI por telas interativas construídas com Java Swing / AWT.
 Fase 3 | 🔴 Planejado | Persistência com Banco de Dados: Substituição da manipulação de arquivos TXT por um SGBD relacional (ex: PostgreSQL / MySQL) com JDBC.
 Fase 4 | 🔴 Planejado | Ecossistema Web & Spring Boot: Transição da aplicação para uma API RESTful completa com Spring Boot, Spring Data JPA e segurança de dados.
@@ -32,7 +32,7 @@ Fase 4 | 🔴 Planejado | Ecossistema Web & Spring Boot: Transição da aplicaç
 
 * **Paradigma:** Programação Orientada a Objetos (POO)
 
-* **Entrada/Saída (I/O):** Pacote `java.io.*` (`BufferedWriter`, `FileWriter`, tratamento de exceções com `IOException`)
+* **Entrada/Saída (I/O) & Validação:** Pacote `java.io.*` (`BufferedReader` / `BufferedWriter`) para leitura de dados, comparação de `Strings` e tratamento de exceções com `IOException`.
 
 ---
 ### 📂 Estrutura do Projeto
@@ -42,10 +42,10 @@ Plaintext
 EvolutionBankSystem/
 │
 ├── src/
-│   ├── Arquivo.java     # Manipulação de leitura e gravação no arquivo TXT
+│   ├── Arquivo.java     # Leitura/escrita no TXT e lógica de comparação para login
 │   ├── Conta.java       # Classe base de conta bancária
 │   ├── Corrente.java    # Especialização de conta corrente
-│   ├── Main.java        # Ponto de entrada da aplicação
+│   ├── Main.java        # Ponto de entrada da aplicação e menu CLI
 │   ├── Metodos.java     # Regras de negócio e operações bancárias
 │   └── Usuario.java     # Entidade de dados do usuário
 │
