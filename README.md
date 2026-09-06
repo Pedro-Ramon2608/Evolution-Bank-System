@@ -16,7 +16,7 @@ Nesta etapa inicial, a aplicação opera via CLI (Console/Terminal) com foco em 
 ---
 ### 🚀 Roadmap de Evolução Pretendida
 
-O projeto passará por quatro grandes fases de refatoração e expansão arquitetural:
+O projeto irá passar por quatro grandes fases de refatoração e expansão arquitetural:
 
 Fase | Status | Descrição & Tecnologias
 :---: | :---: | :---
