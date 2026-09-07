@@ -5,6 +5,7 @@ public class Metodos {
         Scanner sc = new Scanner(System.in);
         boolean continuar = true; // flag para encerrar o while
 
+        sc.nextLine(); // Limpar buffer
         while (continuar) {
             System.out.print("Digite a opção desejada: " +
                     "\n[ 1 ] - Login" +
@@ -13,6 +14,7 @@ public class Metodos {
                     "\nOpção: ");
 
             int opcao = sc.nextInt();
+            sc.nextLine(); // Limpar buffer
 
             switch (opcao) {
                 case 1:
@@ -32,6 +34,8 @@ public class Metodos {
 
 
     public static void criar(Scanner sc, String caminhoArquivo) {
+        sc.nextLine(); // Limpar buffer
+
         System.out.print("Digite seu nome: ");
         String nome = sc.nextLine();
 
@@ -47,6 +51,8 @@ public class Metodos {
         System.out.print("Digite seu senha: ");
         String senha = sc.next().trim();
 
+        sc.nextLine(); // Limpar buffer
+
         Corrente conta = Arquivo.criarConta(caminhoArquivo, nome, cpf, cidade, email, senha);
 
         if (conta != null) {
@@ -56,11 +62,15 @@ public class Metodos {
 
 
     public static void logar(Scanner sc, String caminhoArquivo) {
+        sc.nextLine(); // Limpar buffer
+
         System.out.print("Digite seu e-mail: ");
         String email = sc.next().trim();
 
         System.out.print("Digite seu senha: ");
         String senha = sc.next().trim();
+
+        sc.nextLine(); // Limpar buffer
 
         Corrente conta = Arquivo.loginConta(caminhoArquivo, email, senha);
 
@@ -72,10 +82,13 @@ public class Metodos {
     public static void home(Scanner sc, Corrente conta) {
         boolean continuar = true; // flag para encerrar o while
 
+        double valor;
+
         System.out.println("------------------------------------------");
         System.out.println("Seja Bem-Vindo, " + conta.getNome());
         System.out.println("------------------------------------------");
 
+        sc.nextLine(); // Limpar buffer
         while (continuar) {
             System.out.print("Digite a opção desejada: " +
                     "\n[ 1 ] - Status da conta" +
@@ -84,6 +97,7 @@ public class Metodos {
                     "\n[ 0 ] - Sair" +
                     "\nOpção: ");
             int opcao = sc.nextInt();
+            sc.nextLine(); // Limpar buffer
 
             switch (opcao) {
                 case 1:
@@ -94,13 +108,17 @@ public class Metodos {
                 case 2:
                     // Depositar
                     System.out.print("Digite o valor que deseja depositar: ");
-                    double valor = sc.nextDouble();
+                    valor = sc.nextDouble();
 
                     conta.depositar(conta.getSenha(), valor);
                     break;
 
                 case 3:
                     // Sacar
+                    System.out.print("Digite o valor que deseja sacar: ");
+                    valor = sc.nextDouble();
+
+                    conta.sacar(conta.getSenha(), valor);
                     break;
 
                 case 0:
@@ -109,8 +127,11 @@ public class Metodos {
                     break;
                 default:
                     System.out.println("Escolha uma opção válida.");
-            }
+            } // Fim switch
+
+            sc.nextLine(); // Limpar buffer
         }
 
-    }
+    } // Fim do metodo home
+
 } // Fim classe

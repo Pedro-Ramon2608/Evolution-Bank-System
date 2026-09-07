@@ -3,15 +3,19 @@ public class Conta extends Usuario {
     private String email;
     private String senha;
 
-    public Conta(String nome, String cpf, String cidade, String email, String senha) {
+    public Conta(String nome, String cpf, String cidade, String email, String senha, double saldoConta) {
         super(nome, cpf, cidade);
         this.email = email;
         this.senha = senha;
-        this.saldoConta = 0;
+        this.saldoConta = saldoConta;
     }
 
     public double getSaldoConta() {
         return saldoConta;
+    }
+
+    public void setSaldoConta(double saldoConta) {
+        this.saldoConta = saldoConta;
     }
 
     public String getEmail() {
