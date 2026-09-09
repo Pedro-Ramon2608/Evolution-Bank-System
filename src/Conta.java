@@ -3,15 +3,19 @@ public class Conta extends Usuario {
     private String email;
     private String senha;
 
-    public Conta(String nome, String cpf, String cidade, String email, String senha) {
+    public Conta(String nome, String cpf, String cidade, String email, String senha, double saldoConta) {
         super(nome, cpf, cidade);
         this.email = email;
         this.senha = senha;
-        this.saldoConta = 0;
+        this.saldoConta = saldoConta;
     }
 
     public double getSaldoConta() {
         return saldoConta;
+    }
+
+    public void setSaldoConta(double saldoConta) {
+        this.saldoConta = saldoConta;
     }
 
     public String getEmail() {
@@ -43,7 +47,18 @@ public class Conta extends Usuario {
     public void depositar(String senha, double valor) {
         if (this.getSenha().equals(senha)) {
             if (valor >= 0.01) {
-                this.saldoConta = this.getSaldoConta() + valor;
+                this.setSaldoConta(this.getSaldoConta() + valor);
+
+                System.out.println("Deposito realizado com sucesso." +
+                        "\nSaldo atual: " + this.getSaldoConta());
+
+                boolean saldoAtualizado = Arquivo.atualizarSaldo(this.getCpf(), this.getSaldoConta());
+
+                if (saldoAtualizado) {
+                    System.out.println("Saldo atualizado com sucesso.");
+                } else {
+                    System.out.println("Erro ao gravar a alteração no arquivo.txt");
+                }
 
             } else {
                 System.out.println("Valor inálido. Digite um valor positivo");
