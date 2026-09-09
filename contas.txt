@@ -1,0 +1,3 @@
+Pedro Ramon;1234567899;Logo Ali, 22344;pedro@gmail.com;1234pedro@;196.05;200.0
+Yasmin ;2123456789;Perto de cá, 887;yasmin@gmail.com;123yasmin@;0.0;200.0
+Henry;3123456789;Perto de lá - zona nordente, 552;henry@gmail.com;123henry@;20.50;200.0
